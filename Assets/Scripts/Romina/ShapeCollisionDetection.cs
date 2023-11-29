@@ -10,24 +10,31 @@ public class ShapeCollisionDetection : MonoBehaviour
     [SerializeField]
     string shapeSortingCubeName = "ShapeSortingCubeFixed";
 
+    [Tooltip("Material to use when the object has been put inside the box correctly")]
     [SerializeField]
     Material successMaterial;
 
+    [Tooltip("Object's default material")]
     [SerializeField]
     Material defaultMaterial;
 
+    [Tooltip("Material to use when the object is touching the box")]
     [SerializeField]
     Material touchingMaterial;
 
+    [Tooltip("The position of the shape when it is put inside of the box successfully, relative to its parent position.")]
     [SerializeField]
-    Vector3 successLocation;
+    Vector3 successPosition;
 
+    [Tooltip("Seconds to wait while the object is touchinig the box's bottom trigger before accepting success.")]
     [SerializeField]
     float waitBeforeAccept = 1f;
 
+    [Tooltip("Whether to reset object's state if it constantly touches the box for a period of time.")]
     [SerializeField]
     bool resetOnCollision = false;
 
+    [Tooltip("Seconds to allow constant collision with the box before reseting the object")]
     [SerializeField]
     float collisionWaitThreshold = 1f;
 
@@ -101,7 +108,7 @@ public class ShapeCollisionDetection : MonoBehaviour
             {
                 setMaterial(successMaterial);
             }
-            gameObject.transform.SetLocalPositionAndRotation(successLocation, Quaternion.identity);
+            gameObject.transform.SetLocalPositionAndRotation(successPosition, Quaternion.identity);
             gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         }
         else if (myStatus == status.enteredBoxIncorrectly)
@@ -167,9 +174,13 @@ public class ShapeCollisionDetection : MonoBehaviour
             Debug.Log(gameObject.name + ":" + " collision enter with" + collision.gameObject.name);
             if (myStatus == status.outOfBox)
             {
-                setMaterial(touchingMaterial);
-                collisionStartTime = Time.time;
-                myCollisionStatus = collisionStatus.colliding;
+                if (myCollisionStatus == collisionStatus.notColliding)
+                {
+
+                    setMaterial(touchingMaterial);
+                    collisionStartTime = Time.time;
+                    myCollisionStatus = collisionStatus.colliding;
+                }
             }
             else
             {

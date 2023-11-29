@@ -1885,7 +1885,7 @@ MonoBehaviour:
   successMaterial: {fileID: 2100000, guid: f6c15cd762473a1479d5ec42d024a69b, type: 2}
   defaultMaterial: {fileID: 2100000, guid: 45c1bafa080e0624580153e71900ff98, type: 2}
   touchingMaterial: {fileID: 2100000, guid: 248b46214f262024a86ec01fa323c479, type: 2}
-  successLocation: {x: 0.19, y: 0.7, z: 0.27}
+  successPosition: {x: 0.25, y: 0.7, z: 0.27}
   waitBeforeAccept: 1
   resetOnCollision: 1
   collisionWaitThreshold: 1
@@ -2411,7 +2411,7 @@ MonoBehaviour:
   successMaterial: {fileID: 2100000, guid: f6c15cd762473a1479d5ec42d024a69b, type: 2}
   defaultMaterial: {fileID: 2100000, guid: 45c1bafa080e0624580153e71900ff98, type: 2}
   touchingMaterial: {fileID: 2100000, guid: 248b46214f262024a86ec01fa323c479, type: 2}
-  successLocation: {x: 0.27, y: 0.7, z: 0.27}
+  successPosition: {x: 0.2, y: 0.7, z: 0.27}
   waitBeforeAccept: 1
   resetOnCollision: 1
   collisionWaitThreshold: 1
@@ -5892,6 +5892,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 638661951}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: f3f91d24477fb1f4ba075967f285fc4d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f3f91d24477fb1f4ba075967f285fc4d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f3f91d24477fb1f4ba075967f285fc4d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f3f91d24477fb1f4ba075967f285fc4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.2107
       objectReference: {fileID: 0}
@@ -6445,7 +6457,7 @@ MonoBehaviour:
   successMaterial: {fileID: 2100000, guid: f6c15cd762473a1479d5ec42d024a69b, type: 2}
   defaultMaterial: {fileID: 2100000, guid: 45c1bafa080e0624580153e71900ff98, type: 2}
   touchingMaterial: {fileID: 2100000, guid: 248b46214f262024a86ec01fa323c479, type: 2}
-  successLocation: {x: 0.23, y: 0.7, z: 0.27}
+  successPosition: {x: 0.3, y: 0.7, z: 0.27}
   waitBeforeAccept: 1
   resetOnCollision: 1
   collisionWaitThreshold: 1
