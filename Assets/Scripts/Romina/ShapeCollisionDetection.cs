@@ -112,10 +112,8 @@ public class ShapeCollisionDetection : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("Trigger entered on "+gameObject.name);
         if (!other.gameObject.name.Substring(0, 4).Equals("Hole") && !other.gameObject.name.Equals("BoxCentreTrigger"))
         {
-            //Debug.Log("Unrelated trigger");
             return;
         }
         if (other.gameObject.name.Equals("BoxCentreTrigger"))
@@ -165,18 +163,16 @@ public class ShapeCollisionDetection : MonoBehaviour
         Debug.Log(gameObject.name + ":" + " collision enter with" + collision.gameObject.name);
         if (isTargetedBox(collision.gameObject))
         {
-            Debug.Log("entered collision with targeted object");
             n_colliding += 1;
+            Debug.Log(gameObject.name + ":" + " collision enter with" + collision.gameObject.name);
             if (myStatus == status.outOfBox)
             {
                 setMaterial(touchingMaterial);
-                Debug.Log("changed color to colliding in collision enter, colliding with: " + n_colliding);
                 collisionStartTime = Time.time;
                 myCollisionStatus = collisionStatus.colliding;
             }
             else
             {
-                Debug.Log("changed color to default in collision enter, colliding with: " + n_colliding);
                 setMaterial(defaultMaterial);
                 myCollisionStatus = collisionStatus.colliding;
             }
@@ -185,7 +181,6 @@ public class ShapeCollisionDetection : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        Debug.Log(gameObject.name + ":" + " collision exit with" + collision.gameObject.name);
         if (isTargetedBox(collision.gameObject))
         {
             n_colliding -= 1;
