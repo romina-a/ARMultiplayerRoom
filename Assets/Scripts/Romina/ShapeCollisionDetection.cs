@@ -41,7 +41,6 @@ public class ShapeCollisionDetection : MonoBehaviour
     private int n_colliding = 0;
 
     float statusChangeStarted = 0;
-
     float collisionStartTime = 0;
 
     enum status {outOfBox, enteredBoxCorrectly, enteredBoxIncorrectly};
@@ -176,7 +175,6 @@ public class ShapeCollisionDetection : MonoBehaviour
             {
                 if (myCollisionStatus == collisionStatus.notColliding)
                 {
-
                     setMaterial(touchingMaterial);
                     collisionStartTime = Time.time;
                     myCollisionStatus = collisionStatus.colliding;
@@ -200,7 +198,6 @@ public class ShapeCollisionDetection : MonoBehaviour
             {
                 setMaterial(defaultMaterial);
                 myCollisionStatus = collisionStatus.notColliding;
-                Debug.Log("changed color to normal in collision exit");
             }
         }
     }

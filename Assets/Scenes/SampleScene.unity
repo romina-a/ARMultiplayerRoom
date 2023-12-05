@@ -1888,7 +1888,7 @@ MonoBehaviour:
   successPosition: {x: 0.25, y: 0.7, z: 0.27}
   waitBeforeAccept: 1
   resetOnCollision: 1
-  collisionWaitThreshold: 1
+  collisionWaitThreshold: 2
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2414,7 +2414,7 @@ MonoBehaviour:
   successPosition: {x: 0.2, y: 0.7, z: 0.27}
   waitBeforeAccept: 1
   resetOnCollision: 1
-  collisionWaitThreshold: 1
+  collisionWaitThreshold: 2
 --- !u!4 &871942074 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e30b3c356831fdd4daa2974dbaaff168, type: 3}
@@ -3417,9 +3417,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 142007140022173312, guid: 4d7e2f87fefe0ba468719b15288b46e7, type: 3}
+      propertyPath: m_ModelPrefab
+      value: 
+      objectReference: {fileID: 3973969148631863464, guid: a8cc7442b30ae4f458455412e105aac5, type: 3}
+    - target: {fileID: 142007140022173312, guid: 4d7e2f87fefe0ba468719b15288b46e7, type: 3}
       propertyPath: m_AnimateModel
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 142007140022173312, guid: 4d7e2f87fefe0ba468719b15288b46e7, type: 3}
+      propertyPath: m_DirectionalAnchorRotationAction.m_UseReference
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2304670408713330098, guid: 4d7e2f87fefe0ba468719b15288b46e7, type: 3}
+      propertyPath: m_ModelPrefab
+      value: 
+      objectReference: {fileID: 1768293572455847265, guid: d9cade3dfe828a14796d1d5012cd1daa, type: 3}
     - target: {fileID: 2351505566903569412, guid: 4d7e2f87fefe0ba468719b15288b46e7, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.6
@@ -6460,7 +6472,7 @@ MonoBehaviour:
   successPosition: {x: 0.3, y: 0.7, z: 0.27}
   waitBeforeAccept: 1
   resetOnCollision: 1
-  collisionWaitThreshold: 1
+  collisionWaitThreshold: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
