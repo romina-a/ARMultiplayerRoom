@@ -65,11 +65,14 @@ public class Align : MonoBehaviour
         {
             // print("moving");
             room.transform.Translate(new Vector3(
-                Input.GetAxis("Left Stick X")+Input.GetAxis("D-pad X"), 
-                Input.GetAxis("D-pad Y"), 
+                Input.GetAxis("Left Stick X")+Input.GetAxis("Right Stick X"), 
+                Input.GetAxis("Right Stick Y"), 
                 Input.GetAxis("Left Stick Y"))* move_speed);
 
-            room.transform.Rotate(room.transform.rotation * Vector3.up * Input.GetAxis("Triggers") * rotatoin_speed);
+            room.transform.Rotate(room.transform.rotation * Vector3.up * Input.GetAxis("Triggers") * rotatoin_speed+
+                room.transform.rotation * -Vector3.forward * Input.GetAxis("D-pad X") * rotatoin_speed+
+                room.transform.rotation * Vector3.right * Input.GetAxis("D-pad Y") * rotatoin_speed 
+                );
         }
     }
 }
