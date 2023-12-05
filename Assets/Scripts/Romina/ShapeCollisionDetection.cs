@@ -62,7 +62,7 @@ public class ShapeCollisionDetection : MonoBehaviour
     {
         defaultLocalPosition = transform.localPosition;
         defaultLocalRotation = transform.localRotation;
-        defaultConstraints = gameObject.GetComponent<RigidbodyConstraints>();
+        defaultConstraints = gameObject.GetComponent<Rigidbody>().constraints;
         if (defaultMaterial == null) { defaultMaterial = GetComponent<Material>(); }
     }
 
