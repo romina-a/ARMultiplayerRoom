@@ -1,7 +1,6 @@
 using MixedReality.Toolkit.SpatialManipulation;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.UI;
 using UnityEngine;
 using static UnityEngine.UI.Image;
 
@@ -118,7 +117,7 @@ public class ShapeCollisionDetection : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.gameObject.name.Substring(0, 4).Equals("Hole") && !other.gameObject.name.Equals("BoxCentreTrigger"))
+        if (!other.gameObject.name.Substring(0, 4).Equals("Hole") && !other.gameObject.name.Substring(0, 9).Equals("Collision") && !other.gameObject.name.Equals("BoxCentreTrigger"))
         {
             return;
         }
@@ -136,10 +135,43 @@ public class ShapeCollisionDetection : MonoBehaviour
                 statusChangeStarted = Time.time;
             }
         }
-        else
+        else if (other.gameObject.name.Substring(0, 4).Equals("Hole"))
         {
             Debug.Log("triggered with"+ other.gameObject.name);
             LastHoleTrigger = other.gameObject.name;
+        }
+        else if (other.gameObject.name.Substring(0, 9).Equals("Collision"))
+        {
+            Debug.Log("triggered with collision trigger" + other.gameObject.name);
+            n_colliding += 1;
+            if (myStatus == status.outOfBox)
+            {
+                if (myCollisionStatus == collisionStatus.notColliding)
+                {
+                    setMaterial(touchingMaterial);
+                    collisionStartTime = Time.time;
+                    myCollisionStatus = collisionStatus.colliding;
+                }
+            }
+            else
+            {
+                setMaterial(defaultMaterial);
+                myCollisionStatus = collisionStatus.colliding;
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.name.Substring(0, 9).Equals("Collision"))
+        {
+            n_colliding -= 1;
+            Debug.Log("in collision exit, colliding with: " + n_colliding);
+            if (n_colliding <= 0)
+            {
+                setMaterial(defaultMaterial);
+                myCollisionStatus = collisionStatus.notColliding;
+            }
         }
     }
 
@@ -162,43 +194,44 @@ public class ShapeCollisionDetection : MonoBehaviour
     private bool isTargetedBox(GameObject go)
     {
         return go.name.Equals(shapeSortingCubeName);
+
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log(gameObject.name + ":" + " collision enter with" + collision.gameObject.name);
-        if (isTargetedBox(collision.gameObject))
-        {
-            n_colliding += 1;
-            Debug.Log(gameObject.name + ":" + " collision enter with" + collision.gameObject.name);
-            if (myStatus == status.outOfBox)
-            {
-                if (myCollisionStatus == collisionStatus.notColliding)
-                {
-                    setMaterial(touchingMaterial);
-                    collisionStartTime = Time.time;
-                    myCollisionStatus = collisionStatus.colliding;
-                }
-            }
-            else
-            {
-                setMaterial(defaultMaterial);
-                myCollisionStatus = collisionStatus.colliding;
-            }
-        }
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    Debug.Log(gameObject.name + ":" + " collision enter with" + collision.gameObject.name);
+    //    if (isTargetedBox(collision.gameObject))
+    //    {
+    //        n_colliding += 1;
+    //        Debug.Log(gameObject.name + ":" + " collision enter with" + collision.gameObject.name);
+    //        if (myStatus == status.outOfBox)
+    //        {
+    //            if (myCollisionStatus == collisionStatus.notColliding)
+    //            {
+    //                setMaterial(touchingMaterial);
+    //                collisionStartTime = Time.time;
+    //                myCollisionStatus = collisionStatus.colliding;
+    //            }
+    //        }
+    //        else
+    //        {
+    //            setMaterial(defaultMaterial);
+    //            myCollisionStatus = collisionStatus.colliding;
+    //        }
+    //    }
+    //}
 
-    private void OnCollisionExit(Collision collision)
-    {
-        if (isTargetedBox(collision.gameObject))
-        {
-            n_colliding -= 1;
-            Debug.Log("in collision exit, colliding with: " + n_colliding);
-            if (n_colliding <= 0)
-            {
-                setMaterial(defaultMaterial);
-                myCollisionStatus = collisionStatus.notColliding;
-            }
-        }
-    }
+    //private void OnCollisionExit(Collision collision)
+    //{
+    //    if (isTargetedBox(collision.gameObject))
+    //    {
+    //        n_colliding -= 1;
+    //        Debug.Log("in collision exit, colliding with: " + n_colliding);
+    //        if (n_colliding <= 0)
+    //        {
+    //            setMaterial(defaultMaterial);
+    //            myCollisionStatus = collisionStatus.notColliding;
+    //        }
+    //    }
+    //}
 }
